@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vibin. × Claude: блок для подвала</title>
+
+<!-- 1) ШРИФТ для слова «vibin» (можно убрать: тогда будет запасной жирный шрифт) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap">
+
+<style>
+/* ===== 2) СТИЛИ БЛОКА (копируй целиком до конца комментария «КОНЕЦ СТИЛЕЙ») ===== */
+.vc{
+  /* настройки: меняй под свой проект */
+  --vc-ink:#f5f5f0;                       /* цвет слова «Claude» (на светлом фоне поставь #111) */
+  --vc-muted:#8f8f88;                     /* цвет знака × */
+  --vc-plate-a:#ffffff;                   /* белая плашка: верх */
+  --vc-plate-b:#ececf2;                   /* белая плашка: низ */
+  --vc-dot:#8b5cf6;                       /* цвет точки */
+  --vc-gloss:rgba(167,139,250,.6);        /* цвет бегущего блика */
+  --vc-reflect:rgba(255,255,255,.26);     /* яркость отражения (0 = без отражения) */
+  display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;
+  margin:0 0 44px;                         /* нижний отступ нужен, чтобы отражение не залезало на соседние блоки */
+}
+.vc-vibin{
+  position:relative;display:inline-block;overflow:hidden;
+  font-family:Syne,"Arial Black",Arial,sans-serif;font-weight:800;
+  font-size:clamp(26px,4.4vw,36px);letter-spacing:.01em;line-height:1;color:#111;
+  background:linear-gradient(180deg,var(--vc-plate-a),var(--vc-plate-b));
+  padding:11px 22px 13px;border-radius:18px;
+  -webkit-box-reflect:below 3px linear-gradient(transparent 52%,var(--vc-reflect));
+}
+.vc-vibin b{color:var(--vc-dot);font-weight:800}
+.vc-vibin::after{
+  content:"";position:absolute;top:-30%;bottom:-30%;width:40%;left:-60%;transform:skewX(-20deg);
+  background:linear-gradient(100deg,transparent,var(--vc-gloss),transparent);
+  animation:vc-gloss 3.8s ease-in-out infinite;
+}
+.vc-x{color:var(--vc-muted);font-size:22px}
+.vc-claude{
+  display:inline-flex;align-items:center;gap:10px;color:var(--vc-ink);
+  font:600 clamp(24px,4vw,32px) Georgia,"Times New Roman",serif;letter-spacing:-.01em;
+}
+.vc-mark{width:1.1em;height:1.1em;animation:vc-spin 14s linear infinite}
+@keyframes vc-gloss{0%{left:-60%}45%,100%{left:130%}}
+@keyframes vc-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.vc-vibin::after,.vc-mark{animation:none}}
+/* ===== КОНЕЦ СТИЛЕЙ ===== */
+
+/* стили ниже нужны только для этой демо-страницы, их копировать не надо */
+html,body{height:100%}
+body{margin:0;background:#0a0a0a;display:grid;place-items:center}
+</style>
+</head>
+<body>
+
+<!-- ===== 3) РАЗМЕТКА БЛОКА (копируй этот div туда, где нужен блок, например в подвал) ===== -->
+<div class="vc" role="img" aria-label="Сделано вместе с Claude, vibin x Claude">
+  <span class="vc-vibin" aria-hidden="true">vibin<b>.</b></span>
+  <span class="vc-x" aria-hidden="true">×</span>
+  <span class="vc-claude" aria-hidden="true"><svg class="vc-mark" viewBox="0 0 24 24"><g stroke="#d97757" stroke-width="2.7" stroke-linecap="round"><line x1="12" y1="12" x2="12" y2="2.2" transform="rotate(0 12 12)"/><line x1="12" y1="12" x2="12" y2="3.6" transform="rotate(30 12 12)"/><line x1="12" y1="12" x2="12" y2="2.6" transform="rotate(60 12 12)"/><line x1="12" y1="12" x2="12" y2="3.2" transform="rotate(90 12 12)"/><line x1="12" y1="12" x2="12" y2="2.0" transform="rotate(120 12 12)"/><line x1="12" y1="12" x2="12" y2="3.8" transform="rotate(150 12 12)"/><line x1="12" y1="12" x2="12" y2="2.4" transform="rotate(180 12 12)"/><line x1="12" y1="12" x2="12" y2="3.4" transform="rotate(210 12 12)"/><line x1="12" y1="12" x2="12" y2="2.2" transform="rotate(240 12 12)"/><line x1="12" y1="12" x2="12" y2="3.6" transform="rotate(270 12 12)"/><line x1="12" y1="12" x2="12" y2="2.8" transform="rotate(300 12 12)"/><line x1="12" y1="12" x2="12" y2="3.2" transform="rotate(330 12 12)"/></g></svg>Claude</span>
+</div>
+<!-- ===== КОНЕЦ РАЗМЕТКИ ===== -->
+
+</body>
+</html>
